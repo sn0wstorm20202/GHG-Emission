@@ -40,7 +40,7 @@ body {
             rgba(0, 0, 0, 0.3), 
             rgba(0, 0, 0, 0.6)
         ),
-        url(ghgc1.jpg);
+        url(ghgc1.jpeg);
     min-height: calc(100%);
 }
 
@@ -50,7 +50,7 @@ body {
             rgba(0, 0, 0, 0.6), 
             rgba(0, 0, 0, 0.6)
         ),
-        url(ghgc2.jpg);
+        url(ghgc2.jpeg);
     min-height:auto;
 }
 
@@ -60,7 +60,7 @@ body {
             rgba(0, 0, 0, 0.6), 
             rgba(0, 0, 0, 0.6)
         ),
-        url(ghgc3.jpg);
+        url(ghgc3.jpeg);
     min-height:auto;
     
 }
