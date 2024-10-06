@@ -9,7 +9,7 @@
 
         <!-- Favicon -->
         <link rel="icon" href="favicon.svg">
-        
+
         <!-- Stylesheet -->
         <link rel="stylesheet" href="style.css" />
 
@@ -27,7 +27,7 @@
         <script src="actor-logic.js"></script>
     </head>
     <body>
-        <nav id="navbar" class="bg-gray-800 p-2 mt-0 fixed w-full top-0">
+        <nav id="navbar" class="bg-gray-900 p-2 mt-0 fixed w-full top-0">
             <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -53,36 +53,36 @@
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                        <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
-                        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Impacts and Analysis</a>
-                        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Solutions</a>
-                        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">References and Attributions</a>
+                        <a href="#intro" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Introduction</a>
+                        <a href="#impact" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Impacts and Analysis</a>
+                        <a href="#solution" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Solutions</a>
+                        <a href="#ref" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">References and Attributions</a>
                         </div>
                     </div>
                 </div>
             </div>
             </div>
-        
+
             <!-- Mobile menu, show/hide based on menu state. -->
             <div class="sm:hidden" id="mobile-menu">
                 <div class="space-y-1 px-2 pb-3 pt-2">
-                    <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
-                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Impacts and Analysis</a>
-                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Solutions</a>
-                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">References and Attributions</a>
+                    <a href="#intro" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Introduction</a>
+                    <a href="#impact" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Impacts and Analysis</a>
+                    <a href="#solution" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Solutions</a>
+                    <a href="#ref" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">References and Attributions</a>
                 </div>
             </div>
         </nav>
 
         <!-- Updated sections with dark background and white text -->
-        <section class="img-section-1 flex justify-center items-center bg-gray-900">
+        <section class="img-section-1 flex justify-center items-center bg-gray-900" id="home">
             <div class="text-white text-center py-4 reveal-bottom">
                 <h1 class="text-6xl font-bold">Greenhouse Gases</h1>
                 <p class="text-3xl mt-4 font-semibold">and their Impact on Climate Change.</p>
             </div>
         </section>
 
-        <section class="section section-dark bg-gray-900">
+        <section class="section section-dark bg-gray-900" id="intro">
             <div class="reveal-left">
                 <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Introduction</h1>
                 <hr>
@@ -100,7 +100,7 @@
             </div>
         </section>
 
-  <section class="section section-dark bg-gray-900">
+  <section class="section section-dark bg-gray-900" id="impact">
     <div class="reveal-left">
         <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Impact</h1>
         <hr>
@@ -139,10 +139,10 @@
         </div>
     </div>
 
-    
+
 </section>
-        
-<section class="section section-dark bg-gray-900">
+
+<section class="section section-dark bg-gray-900" id="solution">
             <div class="reveal-left">
                 <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Solution</h1>
                 <hr>
@@ -169,7 +169,7 @@ that different sectors play in contributing to climate change.</br>
 offers practical steps that can be taken at both the national and industry levels for
 reducing emissions</br>
                     </p>
-                
+
             </div>
 </section>
         <section class="img-section-2 bg-gray-900">
@@ -179,7 +179,7 @@ reducing emissions</br>
                 </div>
             </div>
         </section>
-        <section class="section section-dark bg-gray-900">
+        <section class="section section-dark bg-gray-900" >
     <div class="container1">
         <div class="title reveal-left">
             <h4>Steps to Reduce GHG Emissions</h4>
@@ -188,11 +188,11 @@ reducing emissions</br>
         <!-- Step 1 -->
         <div class="content">
             <div class="image reveal-left">
-                <img src="img1.jpeg" alt="Renewable Energy Image" />
+                <img src="img1.jpg" alt="Renewable Energy Image" />
             </div>
             <div class="details reveal-right">
                 <div class="topic">
-                    <h4>1.Use of Green Energy</h4>
+                    <h4>Use of Green Energy</h4>
                 </div>
                 <p>Shift from fossil fuels to renewable energy sources like solar, wind, and hydroelectric power.</p>
             </div>
@@ -201,11 +201,11 @@ reducing emissions</br>
         <!-- Step 2 -->
         <div class="content">
             <div class="image reveal-left">
-                <img src="img2.jpeg" alt="Energy Efficiency Image" />
+                <img src="img2.jpg" alt="Energy Efficiency Image" />
             </div>
             <div class="details reveal-right">
                 <div class="topic">
-                    <h4>2.Increase Energy Efficiency</h4>
+                    <h4>Increase Energy Efficiency</h4>
                 </div>
                 <p>Improve energy efficiency in buildings, transportation, and industry to reduce energy consumption.</p>
             </div>
@@ -214,11 +214,11 @@ reducing emissions</br>
         <!-- Step 3 -->
         <div class="content">
             <div class="image reveal-left">
-                <img src="img3.jpeg" alt="Electrify Transportation Image" />
+                <img src="img3.jpg" alt="Electrify Transportation Image" />
             </div>
             <div class="details reveal-right">
                 <div class="topic">
-                    <h4>3.Electrify Transportation</h4>
+                    <h4>Electrify Transportation</h4>
                 </div>
                 <p>Promote the adoption of electric vehicles and public transportation to reduce emissions from transportation.</p>
             </div>
@@ -231,7 +231,7 @@ reducing emissions</br>
             </div>
             <div class="details reveal-right">
                 <div class="topic">
-                    <h4>4.Carbon Capture and Storage</h4>
+                    <h4>Carbon Capture and Storage</h4>
                 </div>
                 <p>Implement carbon capture and storage technologies to reduce emissions from industrial sources.</p>
             </div>
@@ -240,11 +240,11 @@ reducing emissions</br>
         <!-- Step 5 -->
         <div class="content">
             <div class="image reveal-left">
-                <img src="img5.jpeg" alt="Sustainable Land Use Image" />
+                <img src="img5.jpg" alt="Sustainable Land Use Image" />
             </div>
             <div class="details reveal-right">
                 <div class="topic">
-                    <h4>5.Sustainable Land Use</h4>
+                    <h4>Sustainable Land Use</h4>
                 </div>
                 <p>Implement sustainable land use practices like reforestation, afforestation, and permaculture to sequester carbon dioxide.</p>
             </div>
@@ -286,7 +286,7 @@ reducing emissions</br>
         </div>
     </div>
 </section>
-<section class="section section-dark bg-gray-900">
+<section class="section section-dark bg-gray-900" id="ref">
     <div class="title reveal-left">
         <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Data & Resources:</h1>
         <hr>
@@ -299,33 +299,33 @@ reducing emissions</br>
     3. <a href="https://edgar.jrc.ec.europa.eu/report_2024" target="_blank">EDGAR Report 2024</a>: Detailed data on global GHG emissions by country and sector, with a focus on climate trends.<br>
 
     4. Artés, T. et al. (2019), A global wildfire dataset for fire regimes analysis. <i>Scientific Data</i>, 6(1), 1-11. doi:10.1038/s41597-019-0312-2.<br>
-    
+
     5. EI (2024), Statistical Review of World Energy. <a href="https://www.energyinst.org/statistical-review" target="_blank">Energy Institute</a>, Last access: July 2024.<br>
-    
+
     6. FAOSTAT (2024), UN Food and Agricultural Organisation Statistics. <a href="http://www.fao.org/faostat" target="_blank">FAO</a>, Last access: May 2024.<br>
-    
+
     7. GFMR (2024), Global flaring data for gas consumption. <a href="https://www.worldbank.org/en/programs/gasflaringreduction/global-flaring-data#indicators-by-country" target="_blank">World Bank</a>, Last access: June 2024.<br>
-    
+
     8. IATA (2024), Air Transport Statistics. <a href="https://www.iata.org/en/iata-repository/pressroom/fact-sheets/industry-statistics" target="_blank">IATA</a>, 2024.<br>
-    
+
     9. IEA (2023a), World Energy Balances - 2023 Edition. <a href="https://www.iea.org" target="_blank">IEA</a>.<br>
-    
+
     10. IEA (2023b), Greenhouse Gas Emissions from Energy - 2023 Edition. <a href="https://www.iea.org" target="_blank">IEA</a>.<br>
-    
+
     11. IEA (2024), World energy balances: IEA family and beyond. April 2024 Edition. <a href="https://www.iea.org" target="_blank">IEA</a>.<br>
-    
+
     12. IFA (2024), Urea consumption and production statistics. <a href="https://www.ifastat.org" target="_blank">IFA</a>.<br>
-    
+
     13. USGS (2024), Commodity Statistics. <a href="https://www.usgs.gov/centers/nmic/commodity-statistics-and-information" target="_blank">USGS</a>, Last access: May 2024.<br>
-    
+
     14. WB (2024), GDP PPP data for 1990-2023. <a href="https://www.worldbank.org" target="_blank">World Bank</a>, July 2024.<br>
-    
+
     15. World Steel Association (2024), Steel Statistical Yearbook 2024. <a href="https://worldsteel.org" target="_blank">World Steel Association</a>, 2024.<br>
-            
+
         </p>
     </div>   
 
-    
+
 </section>
 
 <section class="img-section-2 bg-gray-900">
@@ -335,13 +335,13 @@ reducing emissions</br>
         </div>
     </div>
 </section>
-        
-<section class="section section-dark">
+
+<section class="section bg-gray-900">
     <p class="font-semibold text-right text-white">
         © 2024 Team Innova8ors
     </p>
 </section>
-        
+
 
 <script src="content-animator.js"></script>
     </body>
