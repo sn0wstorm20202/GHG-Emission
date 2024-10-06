@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>GHG Impact Visualizer</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="favicon.svg">
+        
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Tailwind.css -->
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+
+        <!-- Leaflet.js -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+
+        <!-- ScrollReveal.js -->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!-- Actor Logic (for e.g., for menus and such) -->
+        <script src="actor-logic.js"></script>
+    </head>
+    <body>
+        <nav id="navbar" class="bg-gray-800 p-2 mt-0 fixed w-full top-0">
+            <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button onclick="menuToggle()" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="absolute -inset-0.5"></span>
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Menu icon when closed -->
+                        <svg id="menu-icon-close" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <!-- Menu icon when open -->
+                        <svg id="menu-icon-open" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex flex-shrink-0 items-center">
+                        <a href="#">
+                            <object id="navbar-icon" width="45" height="34" fill="green" type="image/svg+xml" data="favicon.svg" aria-label="GHG Visualizer">GHG Visualizer</object>
+                        </a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                        <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
+                        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Impacts and Analysis</a>
+                        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Solutions</a>
+                        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">References and Attributions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        
+            <!-- Mobile menu, show/hide based on menu state. -->
+            <div class="sm:hidden" id="mobile-menu">
+                <div class="space-y-1 px-2 pb-3 pt-2">
+                    <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
+                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Impacts and Analysis</a>
+                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Solutions</a>
+                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">References and Attributions</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Updated sections with dark background and white text -->
+        <section class="img-section-1 flex justify-center items-center bg-gray-900">
+            <div class="text-white text-center py-4 reveal-bottom">
+                <h1 class="text-6xl font-bold">Greenhouse Gases</h1>
+                <p class="text-3xl mt-4 font-semibold">and their Impact on Climate Change.</p>
+            </div>
+        </section>
+
+        <section class="section section-dark bg-gray-900">
+            <div class="reveal-left">
+                <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Introduction</h1>
+                <hr>
+                <p class="text-lg font-normal text-white">
+                    Climate change is one of the most pressing global challenges of our time. The primary driver behind this phenomenon is the increase in greenhouse gasses (GHGs) in the atmosphere, which trap heat from the Sun and contribute to the Earth's rising temperatures. Greenhouse gasses such as carbon dioxide (CO₂) and methane (CH₄) play a critical role in climate change by enhancing the atmosphere's ability to trap heat, leading to a cascade of environmental impacts.<br><br>Our project focuses on visualizing these complex relationships by providing an accessible platform where users can explore year-on-year greenhouse gas emissions by country and by industry. This interactive map allows anyone—from policymakers to the general public—to better understand the trends in emissions and their impact on climate change. By offering a detailed analysis of emissions data, we hope to contribute to the global effort to combat climate change through informed decision-making and public awareness.
+                </p>
+            </div>
+        </section>
+
+        <section class="img-section-2 bg-gray-900">
+            <div class="reveal-right">
+                <div class="container mx-auto p-4 text-center text-white">
+                    <p class="text-3xl text-lg font-semibold">Something goes here!</p>
+                </div>
+            </div>
+        </section>
+
+  <section class="section section-dark bg-gray-900">
+    <div class="reveal-left">
+        <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Impact</h1>
+        <hr>
+        <p class="text-lg font-normal text-white">
+           Over the past decade, we have witnessed unprecedented changes in our climate, including rising temperatures, extreme weather events, and disruptions to natural ecosystems. As GHG emissions continue to rise, so do the associated risks—ranging from rising sea levels to food insecurity and the displacement of vulnerable populations. The ability to track and analyze emissions at both the country and industry levels is critical to understanding how these emissions contribute to climate change. 
+        </p>
+    </div>
+</section>
+
+<section class="img-section-3">
+    <div class="reveal-right">
+        <iframe src="https://rakesh-ada.github.io/Slider/" height="600" width="975" scrolling="no" title="Iframe Example"></iframe>
+    </div>
+</section>
+
+<section class="section section-dark bg-gray-900">
+    <div class="reveal-left">
+        <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Analysis</h1>
+        <hr>
+        <p class="text-lg font-normal text-white">
+            <span>The analysis of GHG emissions reveals key trends that help us understand the sources and drivers of climate change. Here are some of the findings we highlight in our project:<br>
+            1. <b>Country-Level Emissions:</b> Our color gradient map shows a stark contrast between emission levels in developed and developing nations. The data highlights that the largest emitters, such as the U.S., China, and India, contribute significantly to global emissions due to industrial activity, energy consumption, and transportation.<br>
+            2. <b>Industry-Specific Emissions:</b> Upon clicking on a specific country, our platform reveals the breakdown of emissions by industry. This includes data on sectors such as energy, transportation, agriculture, and manufacturing, which are the major contributors to GHG emissions.<br>
+            3. <b>Year-on-Year Trends:</b> By analyzing year-on-year changes in emissions, we can identify patterns of increase or decrease in specific regions and industries. This analysis is crucial for evaluating the effectiveness of climate policies, monitoring progress toward emission reduction targets, and identifying areas that require urgent attention.</span>
+        </p>
+    </div>
+</section>
+
+<section class="img-section-2">
+    <div class="reveal-right">
+        <div class="container mx-auto p-4 text-center text-white">
+            <p class="text-3xl text-lg font-semibold">Country-wise Yearly GHG Emissions</p>
+        </div>
+        <div class="flex justify-center">
+            <iframe src="https://rakesh-ada.github.io/graph/" height="600" width="975" scrolling="no" title="Iframe Example"></iframe>
+        </div>
+    </div>
+
+    <div class="reveal-left">
+        <div class="container mx-auto p-4 text-center text-white">
+            <p class="text-3xl text-lg font-semibold">CO2 Cycle</p>
+        </div>
+        <div class="flex justify-center">
+            <iframe src="https://rakesh-ada.github.io/pie-chart/" height="500" width="500" scrolling="no" title="Iframe Example"></iframe>
+        </div>
+    </div>          
+</section>
+        
+<section class="section section-dark bg-gray-900">
+            <div class="reveal-left">
+                <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Solution</h1>
+                <hr>
+                <p class="text-lg font-normal text-white">
+                    The data and analysis presented on our website highlight the urgent need for action
+against climate change. By understanding the sources and consequences of
+greenhouse gas emissions, we can develop effective strategies to reduce our carbon
+footprint and mitigate the impacts of climate change.
+Our solution also addresses the global need for transparent, actionable climate data that can
+inform and drive meaningful change. We offer a three-pronged approach:</p><br>
+                    <p>
+                   1.<b>Data Transparency and Accessibility:</b> Our interactive platform makes GHG data easy
+to understand and navigate. Users can explore country-specific and industry-specific
+emissions data in real time, empowering them to make data-driven decisions. By
+presenting data in an intuitive format, we ensure that both experts and non-experts can
+engage with the information.</br>
+2.<b>Visualizing Emissions:</b> Our dual-map approach provides users with a clear
+understanding of how emissions are distributed geographically and across industries.
+The first map presents a global view, showcasing the year-on-year rise in emissions for
+each country. The second map dives deeper into the emissions breakdown by industry,
+enabling users to explore the root causes of a country's emissions and assess the role
+that different sectors play in contributing to climate change.</br>
+3.<b>Actionable Insights and Recommendations:</b> Beyond data visualization, our project
+offers practical steps that can be taken at both the national and industry levels for
+reducing emissions</br>
+                    </p>
+                
+            </div>
+</section>
+        <section class="img-section-2 bg-gray-900">
+            <div class="reveal-right">
+                <div class="container mx-auto p-4 text-center text-white">
+                    <p class="text-3xl text-lg font-semibold"></p>
+                </div>
+            </div>
+        </section>
+        <section class="section section-dark bg-gray-900">
+    <div class="container1">
+        <div class="title reveal-left">
+            <h4>Steps to Reduce GHG Emissions</h4>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="content">
+            <div class="image reveal-left">
+                <img src="img1.jpg" alt="Renewable Energy Image" />
+            </div>
+            <div class="details reveal-right">
+                <div class="topic">
+                    <h4>1.Transition to Renewable Energy</h4>
+                </div>
+                <p>Shift from fossil fuels to renewable energy sources like solar, wind, and hydroelectric power.</p>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="content">
+            <div class="image reveal-left">
+                <img src="img2.jpg" alt="Energy Efficiency Image" />
+            </div>
+            <div class="details reveal-right">
+                <div class="topic">
+                    <h4>2.Increase Energy Efficiency</h4>
+                </div>
+                <p>Improve energy efficiency in buildings, transportation, and industry to reduce energy consumption.</p>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="content">
+            <div class="image reveal-left">
+                <img src="img3.jpg" alt="Electrify Transportation Image" />
+            </div>
+            <div class="details reveal-right">
+                <div class="topic">
+                    <h4>3.Electrify Transportation</h4>
+                </div>
+                <p>Promote the adoption of electric vehicles and public transportation to reduce emissions from transportation.</p>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="content">
+            <div class="image reveal-left">
+                <img src="img4.webp" alt="Carbon Capture Image" />
+            </div>
+            <div class="details reveal-right">
+                <div class="topic">
+                    <h4>4.Carbon Capture and Storage</h4>
+                </div>
+                <p>Implement carbon capture and storage technologies to reduce emissions from industrial sources.</p>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="content">
+            <div class="image reveal-left">
+                <img src="img5.jpg" alt="Sustainable Land Use Image" />
+            </div>
+            <div class="details reveal-right">
+                <div class="topic">
+                    <h4>5.Sustainable Land Use</h4>
+                </div>
+                <p>Implement sustainable land use practices like reforestation, afforestation, and permaculture to sequester carbon dioxide.</p>
+            </div>
+        </div>
+    </div>
+        </section><section class="img-section-2 bg-gray-900">
+            <div class="reveal-right">
+                <div class="container mx-auto p-4 text-center text-white">
+                    <p class="text-3xl text-lg font-semibold"></p>
+                </div>
+            </div>
+        </section>
+   <section class="section section-dark bg-gray-900">
+    <div class="title reveal-left">
+        <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Individual Actions:</h1>
+        <hr>
+        <p class="text-lg font-normal text-white">
+            1. Reduce Energy Consumption: Turn off lights, electronics, and appliances when not in use to reduce energy consumption.<br>
+            2. Use Public Transportation: Use public transportation, walk, or bike whenever possible to reduce emissions from transportation.<br>
+            3. Eat a Plant-Based Diet: Choose a plant-based diet to reduce greenhouse gas emissions from agriculture.<br>
+            4. Conserve Water: Conserve water to reduce energy consumption and greenhouse gas emissions from water treatment.<br>
+            5. Support Renewable Energy: Invest in renewable energy sources like solar panels or renewable energy credits to support clean energy production.
+        </p>
+    </div>   
+
+    <div class="title reveal-left">
+        <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Call to Action:</h1>
+        <hr>
+        <p class="text-lg font-normal text-white">
+            Join us in the fight against climate change by taking action today. Share our website with your friends and family to raise awareness about the importance of reducing greenhouse gas emissions. Together, we can make a difference and create a more sustainable future for all.
+        </p>
+    </div>
+</section>
+
+<section class="img-section-2 bg-gray-900">
+    <div class="reveal-right">
+        <div class="container mx-auto p-4 text-center text-white">
+            <p class="text-3xl font-semibold"> <!-- Ensure text content here --></p>
+        </div>
+    </div>
+</section>
+<section class="section section-dark bg-gray-900">
+    <div class="title reveal-left">
+        <h1 class="text-white text-2xl md:text-4xl font-extrabold mb-2">Data & Resources:</h1>
+        <hr>
+        <p class="text-lg font-normal text-white">
+            <p class="text-lg font-normal text-white">
+    1. <a href="https://ourworldindata.org/greenhouse-gas-emissions" target="_blank">Our World in Data - Greenhouse Gas Emissions</a>: A comprehensive overview of global GHG emissions by sector, country, and gas type with interactive charts.<br>
+
+    2. <a href="https://www.spaceappschallenge.org/nasa-space-apps-2024/challenges/tell-us-a-climate-story/?" target="_blank">NASA Space Apps Challenge 2024 - Climate Storytelling</a>: Resources for using data to tell impactful climate stories through NASA's initiative.<br>
+
+    3. <a href="https://edgar.jrc.ec.europa.eu/report_2024" target="_blank">EDGAR Report 2024</a>: Detailed data on global GHG emissions by country and sector, with a focus on climate trends.<br>
+
+    4. Artés, T. et al. (2019), A global wildfire dataset for fire regimes analysis. <i>Scientific Data</i>, 6(1), 1-11. doi:10.1038/s41597-019-0312-2.<br>
+    
+    5. EI (2024), Statistical Review of World Energy. <a href="https://www.energyinst.org/statistical-review" target="_blank">Energy Institute</a>, Last access: July 2024.<br>
+    
+    6. FAOSTAT (2024), UN Food and Agricultural Organisation Statistics. <a href="http://www.fao.org/faostat" target="_blank">FAO</a>, Last access: May 2024.<br>
+    
+    7. GFMR (2024), Global flaring data for gas consumption. <a href="https://www.worldbank.org/en/programs/gasflaringreduction/global-flaring-data#indicators-by-country" target="_blank">World Bank</a>, Last access: June 2024.<br>
+    
+    8. IATA (2024), Air Transport Statistics. <a href="https://www.iata.org/en/iata-repository/pressroom/fact-sheets/industry-statistics" target="_blank">IATA</a>, 2024.<br>
+    
+    9. IEA (2023a), World Energy Balances - 2023 Edition. <a href="https://www.iea.org" target="_blank">IEA</a>.<br>
+    
+    10. IEA (2023b), Greenhouse Gas Emissions from Energy - 2023 Edition. <a href="https://www.iea.org" target="_blank">IEA</a>.<br>
+    
+    11. IEA (2024), World energy balances: IEA family and beyond. April 2024 Edition. <a href="https://www.iea.org" target="_blank">IEA</a>.<br>
+    
+    12. IFA (2024), Urea consumption and production statistics. <a href="https://www.ifastat.org" target="_blank">IFA</a>.<br>
+    
+    13. USGS (2024), Commodity Statistics. <a href="https://www.usgs.gov/centers/nmic/commodity-statistics-and-information" target="_blank">USGS</a>, Last access: May 2024.<br>
+    
+    14. WB (2024), GDP PPP data for 1990-2023. <a href="https://www.worldbank.org" target="_blank">World Bank</a>, July 2024.<br>
+    
+    15. World Steel Association (2024), Steel Statistical Yearbook 2024. <a href="https://worldsteel.org" target="_blank">World Steel Association</a>, 2024.<br>
+            
+        </p>
+    </div>   
+
+    
+</section>
+
+<section class="img-section-2 bg-gray-900">
+    <div class="reveal-right">
+        <div class="container mx-auto p-4 text-center text-white">
+            <p class="text-3xl font-semibold"> <!-- Ensure text content here --></p>
+        </div>
+    </div>
+</section>
+        
+<section class="section section-dark">
+    <p class="font-semibold text-right text-white">
+        © 2024 Team Innova8ors
+    </p>
+</section>
+        
+
+<script src="content-animator.js"></script>
+    </body>
+</html>
